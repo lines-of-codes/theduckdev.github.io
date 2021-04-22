@@ -1,0 +1,84 @@
+* {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: normal;
+    border: none;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color:  #000000;
+}
+
+.showedBarIcons {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 70px;
+  background-color: #000000;
+}
+
+.showedBarIcons label {
+  padding-top: 25px;
+  height: 45px;
+  padding-left: 25px;
+  text-align: center;
+  transition-duration: 0.3s;
+  display: flex;
+}
+
+.hiddenBar {
+  position: fixed;
+  top: 0px;
+  left: 70px;
+  width: 0px;
+  height: 100%;
+  background-color: #000000;
+  transition-duration: 0.3s;
+  border-right: 1px dashed white;
+}
+
+.hiddenBar label {
+  padding-top: 25px;
+  padding-left: 25px;
+  height: 45px;
+  display: flex;
+  opacity: 0;
+  transition-duration: 0.2s;
+  text-decoration: none;
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#FFFFFF, #FFFFFF);
+  background-size: 80% 1px, 0 1px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s linear;
+  white-space: nowrap;
+}
+
+.hiddenBar label:hover {
+  background-size: 0 1px, 80% 1px;
+}
+
+.showedBarIcons:hover + .hiddenBar {
+  width: 180px;
+  transition-duration: 0.3s;
+}
+
+.showedBarIcons:hover + .hiddenBar label {
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+
+.hiddenBar:hover {
+  width: 180px;
+  transition-duration: 0.3s;
+}
+
+.hiddenBar:hover label {
+  opacity: 1;
+  transition-duration: 0.3s;
+}
