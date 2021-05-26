@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&display=swap" rel="stylesheet">
+    <title>LifeInACheckBox</title>
+    <style type="text/css">
+    	* {
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-weight: normal;
+		    font-size: 20px;
+            border: none;
+            text-decoration: none;
+            color: #FFFFFF;
+            text-align: center;
+            align-items: center;
+        }
+        
+		*:focus {
+            outline: none !important;
+		}
+        
+		html {
+            scroll-behavior: smooth;
+		}
+        
+    	body {
+            background-color: #000000;
+    	}
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        #day, #month, #year {
+        	width: 50px;
+      	}
+
+      	td {
+      		padding: 0, 0, 0, 0;
+      		width: 15px;
+      		height: 15px;
+      	}
+
+      	.checked {
+      		background-color: #00adb5;
+      	}
+
+      	.unchecked {
+      		background-color: #eeeeee;
+      	}
+
+      	#tableBox {
+      		position: absolute;
+            top: 800px;
+            left: 50%;
+            transform: translate(-50%, -50%);(-90deg);
+      	}
+
+      	input, button {
+      		padding-left: 15px;
+      		width: 150px !important;
+      		height: 50px;
+      		background-color: black;
+            color: white;
+            font-weight: bolder;
+            transition-duration: 0.2s;
+      	}
+
+        input:hover, button:hover {
+      		background-color: white;
+            color: black;
+            transition-duration: 0.2s;
+      	}
+
+      	input[type=number]::-webkit-inner-spin-button {
+ 			-webkit-appearance: none;
+		}
+		
+		#percentage {
+			font-size: 120px;
+			position: absolute;
+			left: 74%;
+			top: 0px;
+		}
+
+        .space {
+            padding-bottom: 1600px;
+        }
+    </style>
+  </head>
+  <body>
+      <div style="position: absolute;left: 46vw;">
+        <label>Date of Birth:</label>
+        <input type="number" id="day">
+        <input type="number" id="month">
+        <input type="number" id="year">
+        <button onclick="rerender()">Submit</button>
+    </div>
+    <table id="tableBox"></table>
+    <div class="space"></div>
+
+    <script type="text/javascript">
+      	document.body.style.zoom = "60%";
+		if (localStorage.getItem("day") && localStorage.getItem("month") && localStorage.getItem("year")) {
+		    document.getElementById("day").value = localStorage.getItem("day");
+		    document.getElementById("month").value = localStorage.getItem("month");
+		    document.getElementById("year").value = localStorage.getItem("year");
+		}
+
+		let d1 = localStorage.getItem("day");
+		let m1 = localStorage.getItem("month");
+		let y1 = localStorage.getItem("year");
+
+		let d2 = new Date().getDate();
+		let m2 = new Date().getMonth() + 1;
+		let y2 = new Date().getFullYear();
+
+		let week = Math.round(((y2 - y1) * 365 + (m2 - m1) * 30.417 + (d2 - d1)) / 7);
+
+		for (let i = 1; i < 81; i++) {
+		    let x = document.createElement("TR");
+		    document.getElementById("tableBox").appendChild(x);
+		    for (let j = 1; j < 53; j++) {
+		        let y = document.createElement("TD");
+		        x.appendChild(y);
+		        y.setAttribute("class", "tableCheckBox unchecked");
+		        if ((i*52) + j < week) {
+		            y.setAttribute("class", "tableCheckBox checked");
+		        }
+		    }
+		}
+
+		function rerender() {
+		    if (document.getElementById("tableBox")) {
+		        document.getElementById("tableBox").innerHTML = "";
+		    }
+
+		    localStorage.setItem("day", document.getElementById("day").value);
+		    localStorage.setItem("month", document.getElementById("month").value);
+		    localStorage.setItem("year", document.getElementById("year").value);
+
+		    let d1 = localStorage.getItem("day");
+		    let m1 = localStorage.getItem("month");
+		    let y1 = localStorage.getItem("year");
+
+		    let d2 = new Date().getDate();
+		    let m2 = new Date().getMonth() + 1;
+		    let y2 = new Date().getFullYear();
+
+		    let week = Math.round(((y2 - y1) * 365 + (m2 - m1) * 30.417 + (d2 - d1)) / 7);
+
+		    for (let i = 1; i < 81; i++) {
+		    let x = document.createElement("TR");
+		    document.getElementById("tableBox").appendChild(x);
+		    for (let j = 1; j < 53; j++) {
+		        let y = document.createElement("TD");
+		        x.appendChild(y);
+		        y.setAttribute("class", "tableCheckBox unchecked");
+		        if ((i*52) + j < week) {
+		            y.setAttribute("class", "tableCheckBox checked");
+		        }
+		    }
+		}
+		}
+    </script>
+  </body>
+</html>
