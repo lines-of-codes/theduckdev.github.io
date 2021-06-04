@@ -12,8 +12,9 @@
 }
 
 .newPost .button {
-	background-color: white;
-	color: black;
+	display: inline-block;
+	background-color: #FF6C52;
+	color: #FFFFFF;
 	font-weight: bolder;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -23,13 +24,13 @@
 }
 
 .newPost .button:hover {
-	background-color: black;
-	color: white;
+	background-color: #FF6C52;
 	font-weight: bolder;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
+  	transform: translate(0, -10px);
 	transition-duration: 0.1s;
 }
 

@@ -1,9 +1,9 @@
 * {
     font-family: 'Montserrat Alternates', sans-serif;
-    font-weight: normal;
+    font-weight: bolder;
     border: none;
     text-decoration: none;
-    color: #FFFFFF;
+    color: #343434;
 }
 
 html {
@@ -11,11 +11,7 @@ html {
 }
 
 body {
-    background-color:  #000000;
-}
-
-::-webkit-scrollbar {
-    display: none;
+    background-color: #FED900;
 }
 
 .showedBarIcons {
@@ -24,7 +20,7 @@ body {
   left: 0px;
   height: 100%;
   width: 70px;
-  background-color: #000000;
+  background-color: #FED900;
 }
 
 .showedBarIcons label {
@@ -42,9 +38,9 @@ body {
   left: 70px;
   width: 0px;
   height: 100%;
-  background-color: #000000;
+    background-color: #FED900;
   transition-duration: 0.3s;
-  border-right: 1px dashed white;
+  border-right: 2px dashed #343434;
 }
 
 .hiddenBar label {
@@ -55,7 +51,7 @@ body {
   opacity: 0;
   transition-duration: 0.2s;
   text-decoration: none;
-  background-image: linear-gradient(#000000, #000000), linear-gradient(#FFFFFF, #FFFFFF);
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#FED900, #FED900);
   background-size: 80% 1px, 0 1px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
