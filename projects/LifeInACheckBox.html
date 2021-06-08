@@ -102,9 +102,9 @@
     </style>
   </head>
   <body>
-        <input onkeyup="check()" type="number" id="day">
-        <input onkeyup="check()" type="number" id="month">
-        <input onkeyup="check()" type="number" id="year">
+        <input onkeyup="check()" placeholder="Day" type="number" id="day">
+        <input onkeyup="check()" placeholder="Month" type="number" id="month">
+        <input onkeyup="check()" placeholder="Year" type="number" id="year">
     <table cellspacing="0" cellpadding="0" id="tableBox"></table>
 
     <script type="text/javascript">
@@ -112,11 +112,7 @@
 		    document.getElementById("day").value = localStorage.getItem("day");
 		    document.getElementById("month").value = localStorage.getItem("month");
 		    document.getElementById("year").value = localStorage.getItem("year");
-		} else {
-        document.getElementById("day").value = "date";
-        document.getElementById("month").value = "month";
-        document.getElementById("year").value = "year";
-    }
+		}
 
 		let d1 = localStorage.getItem("day");
 		let m1 = localStorage.getItem("month");
@@ -128,14 +124,16 @@
 
 		let week = Math.round(((y2 - y1) * 365 + (m2 - m1) * 30.417 + (d2 - d1)) / 7);
 
+		let n = 0;
 		for (let i = 1; i < 53; i++) {
 		    let x = document.createElement("TR");
 		    document.getElementById("tableBox").appendChild(x);
 		    for (let j = 1; j < 81; j++) {
+		    	n++;
 		        let y = document.createElement("TD");
 		        x.appendChild(y);
 		        y.setAttribute("class", "tableCheckBox unchecked");
-		        if ((i*52) + j < week) {
+		        if (n < week) {
 		            y.setAttribute("class", "tableCheckBox checked");
 		        }
 		    }
@@ -166,18 +164,20 @@
 
 		    let week = Math.round(((y2 - y1) * 365 + (m2 - m1) * 30.417 + (d2 - d1)) / 7);
 
-		    for (let i = 1; i < 53; i++) {
-		    let x = document.createElement("TR");
-		    document.getElementById("tableBox").appendChild(x);
-		    for (let j = 1; j < 81; j++) {
-		        let y = document.createElement("TD");
-		        x.appendChild(y);
-		        y.setAttribute("class", "tableCheckBox unchecked");
-		        if ((i*52) + j < week) {
-		            y.setAttribute("class", "tableCheckBox checked");
-		        }
-		    }
-		}
+		    let n = 0;
+			for (let i = 1; i < 53; i++) {
+			    let x = document.createElement("TR");
+			    document.getElementById("tableBox").appendChild(x);
+			    for (let j = 1; j < 81; j++) {
+			    	n++;
+			        let y = document.createElement("TD");
+			        x.appendChild(y);
+			        y.setAttribute("class", "tableCheckBox unchecked");
+			        if (n < week) {
+			            y.setAttribute("class", "tableCheckBox checked");
+			        }
+			    }
+			}
 		}
     </script>
   </body>
